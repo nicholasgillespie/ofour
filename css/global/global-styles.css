@@ -1,0 +1,152 @@
+/* GLOBAL SETTINGS //////////////////// */
+body {
+  color: var(--color-dark);
+  background: var(--color-light);
+  font-size: var(--type-0);
+  font-family: var(--font-sans-serif);
+  line-height: var(--line-height);
+  letter-spacing: var(--tracking);
+  overflow-wrap: anywhere;
+}
+
+/* DOCUMENT STRUCTURE //////////////////// */
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-inline-size: var(--min);
+}
+
+header {
+  border-block-end: var(--border);
+}
+
+footer {
+  border-block-start: var(--border);
+}
+
+section~section {
+  border-block-start: var(--border)
+}
+
+/* TYPOGRAPHY //////////////////// */
+/* HEADINGS <h1><h6> */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--tracking-s);
+  hyphens: auto;
+}
+
+h1 {
+  font-size: var(--type-5);
+  max-inline-size: 15ch;
+}
+
+h2 {
+  font-size: var(--type-3);
+}
+
+h3 {
+  font-size: var(--type-2);
+}
+
+:is(h2, h3) {
+  max-inline-size: 30ch;
+}
+
+h4 {
+  font-size: var(--type-1);
+  max-inline-size: 45ch;
+}
+
+/* TEXT ELEMENTS */
+p,
+/* li, */
+blockquote:not([class]) {
+  max-inline-size: var(--measure);
+}
+
+blockquote:not([class]) {
+  font-family: var(--font-serif);
+  font-size: var(--type-2);
+}
+
+/* Markdown blockquote:not([class])s aren't ideal,
+so we're presuming the person quoted is the last p */
+blockquote:not([class]) p:last-of-type {
+  font-family: var(--font-base);
+  font-size: var(--type-1);
+  font-weight: normal;
+}
+
+/* MORE GENERIC ELEMENTS //////////////////// */
+/* TYPOGRAPHICAL */
+/* STRUCTURAL */
+ul,
+ol {
+  padding: 0;
+  margin-block: 0;
+}
+
+svg {
+  block-size: 2ex;
+  inline-size: auto;
+  flex: none;
+}
+
+/* INTERACTIVE STATES //////////////////// */
+/* SELECTION */
+::selection {
+  color: var(--color-light);
+  background: var(--color-dark);
+  /* background: rgba(0, 0, 0, 0.99); */
+}
+
+.invert::selection {
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
+
+/* INTERACTIVE ELEMENTS */
+a {
+  color: currentcolor;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.flow > a {
+  display: block;
+}
+
+:focus {
+  outline: 2px solid;
+  outline-offset: 0.3ch;
+}
+
+:target {
+  scroll-margin-block-start: 2ex;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* EXPERIMENTATION */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

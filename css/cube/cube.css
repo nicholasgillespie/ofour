@@ -1,0 +1,144 @@
+/* CUBE-CSS //////////////////// */
+/* COMPOSITION */
+/* WRAPPER */
+.wrapper {
+  max-inline-size: var(--wrapper-max-inline-size, 85rem);
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  padding-inline-start: var(--gutter);
+  padding-inline-end: var(--gutter);
+  position: relative;
+}
+
+/* REGION */
+.region {
+  padding-block-start: var(--region-padding-start, var(--gutter));
+  padding-block-end: var(--region-padding-end, var(--gutter));
+}
+
+.region[data-region='large'] {
+  --region-padding-start: var(--space-xl);
+  --region-padding-end: var(--space-xl);
+}
+
+/* CLUSTER */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-gap, var(--gutter));
+  justify-content: var(--cluster-justify-content, flex-start);
+  align-items: var(--cluster-align-items, center);
+}
+
+.cluster[data-cluster='space-between'] {
+  justify-content: space-between;
+  align-content: space-between
+}
+
+.cluster[data-cluster='flex-end'] {
+  --cluster-justify-content: flex-end;
+}
+
+.cluster[data-cluster='column'] {
+  flex-direction: column;
+  justify-content: space-between;
+  --cluster-align-items: flex-start;
+}
+
+/* BOX */
+.box {
+  padding: var(--space-s);
+  border: var(--border);
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
+
+/* STACK */
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * {
+  margin-block: 0;
+} 
+
+.stack > * + * {
+  margin-block-start: var(--stack-block-start, var(--gutter));
+}
+
+/* SIDEBAR */
+.sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sidebar-gap, var(--gutter));
+}
+
+.sidebar> :first-child {
+  flex-grow: 1;
+  flex-basis: var(--sidebar-target-width, 20rem);
+}
+
+.sidebar> :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: var(--sidebar-content-min-inline-size, 50%);
+}
+
+.sidebar[data-direction='rtl'] {
+  flex-direction: row-reverse;
+}
+
+/* GRID
+--grid-min-item-size (14rem): How large each item should be ideally, as a minimum.
+--grid-template-columns (auto-fill): Set either auto-fit or auto-fill */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    var(--grid-placement, auto-fill),
+    minmax(var(--grid-min-item-size, 16rem), 1fr)
+  );
+  gap: var(--gutter, var(--space-s-l));
+}
+
+.grid[data-grid-min-item-size="12rem"] {
+  --grid-min-item-size: 12rem;
+}
+
+.grid[data-layout='50-50'] {
+  --grid-placement: auto-fit;
+  --grid-min-item-size: clamp(12rem, 43vw, 26rem);
+}
+
+/* FRAME */
+.frame {
+  --w: 16;
+  --h: 9;
+  aspect-ratio: var(--w) / var(--h);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.frame > img,
+.frame > video {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+/* UTILITY */
+/* flow */
+.flow > :where(:not(:first-child)) {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+.invert {
+  color: var(--color-light);
+  background-color: var(--color-dark);
+}
+
+/* BLOCK */
+/* EXCEPTION */
