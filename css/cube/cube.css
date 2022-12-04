@@ -35,10 +35,6 @@
   align-content: space-between
 }
 
-.cluster[data-cluster='flex-end'] {
-  --cluster-justify-content: flex-end;
-}
-
 .cluster[data-cluster='column'] {
   flex-direction: column;
   justify-content: space-between;
